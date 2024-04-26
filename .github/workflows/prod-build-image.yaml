@@ -40,8 +40,8 @@ jobs:
           file: ./.docker/Dockerfile
           push: true
           tags: |
-            "ghcr.io/sparcs-kaist/zabo-server:${{ env.IMAGE_TAG }}"
-            "ghcr.io/sparcs-kaist/zabo-server:latest"
+            "ghcr.io/jinho-123/zabo-boards:${{ env.IMAGE_TAG }}"
+            "ghcr.io/jinho-123/zabo-boards:latest"
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
       - name: Remove old cache
