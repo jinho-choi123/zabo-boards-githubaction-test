@@ -30,7 +30,7 @@ jobs:
       - name: Log in to Github Container Registry
         run: echo ${{secrets.GITHUB_TOKEN}} | docker login ghcr.io -u USERNAME --password-stdin
       - name: Build Static Content
-        run:
+        run: yarn build
       - name: Build and Push Image
         id: docker-build
         uses: docker/build-push-action@v5
