@@ -17,7 +17,7 @@ jobs:
       - name: Install Yarn
         run: npm install --global yarn
       - name: Install dependencies
-        run: yarn & yarn build
+        run: yarn
       - name: Setup Docker buildX
         uses: docker/setup-buildx-action@v3
       - name: Cache Docker layers
