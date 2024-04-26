@@ -29,6 +29,10 @@ jobs:
             ${{runner.os}}-buidx-
       - name: Log in to Github Container Registry
         run: echo ${{secrets.GITHUB_TOKEN}} | docker login ghcr.io -u USERNAME --password-stdin
+      - name: debug
+        run: pwd
+      - name: debug2
+        run: ls -al
       - name: Build Static Content
         run: yarn build
       - name: Build and Push Image
