@@ -5,13 +5,12 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn --version
 
 RUN yarn
 
 RUN yarn build
 
-RUN yarn install --global serve
+RUN yarn global add serve
 
 EXPOSE 80
 
