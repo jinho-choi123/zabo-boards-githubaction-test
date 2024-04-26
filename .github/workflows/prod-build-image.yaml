@@ -11,13 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-      - name: Install Yarn
-        run: npm install --global yarn
-      - name: Install dependencies
-        run: yarn
       - name: Setup Docker buildX
         uses: docker/setup-buildx-action@v3
       - name: Cache Docker layers
@@ -29,16 +22,6 @@ jobs:
             ${{runner.os}}-buidx-
       - name: Log in to Github Container Registry
         run: echo ${{secrets.GITHUB_TOKEN}} | docker login ghcr.io -u USERNAME --password-stdin
-      - name: debug
-        run: pwd
-      - name: debug2
-        run: ls -al
-      - name: Build Static Content
-        run: yarn build
-      - name: debug3
-        run: pwd
-      - name: debug4
-        run: ls -al
       - name: Build and Push Image
         id: docker-build
         uses: docker/build-push-action@v5
@@ -48,8 +31,8 @@ jobs:
           file: ./.docker/Dockerfile
           push: true
           tags: |
-            "ghcr.io/jinho-123/zabo-boards:${{ env.IMAGE_TAG }}"
-            "ghcr.io/jinho-123/zabo-boards:latest"
+            "ghcr.io/jinho-choi123/zabo-boards:${{ env.IMAGE_TAG }}"
+            "ghcr.io/jinho-choi123/zabo-boards:latest"
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
       - name: Remove old cache
