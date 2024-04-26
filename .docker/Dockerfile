@@ -3,7 +3,7 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY ./dist/ /app/
+COPY dist/ /app/
 
 RUN npm install --global serve
 
